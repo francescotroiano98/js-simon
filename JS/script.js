@@ -47,7 +47,9 @@ document.getElementById("seconds").innerHTML = secondsLeft;
 
 
 
-    const totalTimeInSeconds = 61000;
+    const totalTimeInSeconds = ((daysLeft*24*60*60)+ (hoursLeft * 60*60)+(minutesLeft*60)+(secondsLeft))*1000;
+
+    console.log(totalTimeInSeconds);
 
     let secondsToShow = 60;
 
