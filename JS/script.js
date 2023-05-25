@@ -8,7 +8,7 @@ console.log(booleanLesson.getMinutes());
 
 console.log(booleanLesson.getSeconds());
 
-const myDay = new Date('May 25, 2023 06:30:10');
+const myDay = new Date('May 25, 2023 17:30:00');
 
 console.log(myDay.getDate());
 
@@ -32,11 +32,15 @@ console.log(minutesLeft);
 let secondsLeft = Math.floor((booleanLesson - myDay) / 1000) % 60; // il modulo di 60 mi garantisce che il valore dei secondi rimanga compreso tra 0 e 59 indipendentemente dalla differenza
 console.log(secondsLeft);
 
-let minutes = 30
 
 
+document.getElementById("days").innerHTML = daysLeft;
 
+document.getElementById("hours").innerHTML = hoursLeft;
 
+document.getElementById("minutes").innerHTML = minutesLeft;
+
+document.getElementById("seconds").innerHTML = secondsLeft;
 
 
 
