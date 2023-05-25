@@ -8,7 +8,7 @@ console.log(booleanLesson.getMinutes());
 
 console.log(booleanLesson.getSeconds());
 
-const myDay = new Date('May 25, 2023 17:30:10');
+const myDay = new Date('May 25, 2023 17:30:50');
 
 console.log(myDay.getDate());
 
@@ -56,17 +56,15 @@ document.getElementById("seconds").innerHTML = secondsLeft;
     const clock = setInterval(function(){
         secondsToShow--;
         console.log(secondsToShow);
+
         document.getElementById("seconds").innerHTML = secondsToShow;
+        if(secondsToShow === 0){
+            secondsToShow = 60;
+        }
     }, 1000);
 
     setTimeout(function(){
         clearInterval(clock);
     }, totalTimeInSeconds);
 
-if (secondsToShow === 0 ){
 
-    secondsLeft
-
-    document.getElementById("minutes").innerHTML = minutes;
-    
-} 
