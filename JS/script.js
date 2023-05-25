@@ -1,23 +1,6 @@
 const booleanLesson = new Date('May 26, 2023 09:30:00');
 
-console.log(booleanLesson.getDate());
-
-console.log(booleanLesson.getHours());
-
-console.log(booleanLesson.getMinutes());
-
-console.log(booleanLesson.getSeconds());
-
-const myDay = new Date('May 25, 2023 17:30:50');
-
-console.log(myDay.getDate());
-
-console.log(myDay.getHours());
-
-console.log(myDay.getMinutes());
-
-console.log(myDay.getSeconds());
-
+const myDay = new Date('May 25, 2023 7:30:00');
 
 let daysLeft = Math.abs(booleanLesson.getDate() - myDay.getDate() - 1);
 
@@ -42,6 +25,9 @@ document.getElementById("minutes").innerHTML = minutesLeft;
 
 document.getElementById("seconds").innerHTML = secondsLeft;
 
+if (secondsLeft === 0){
+    secondsLeft = 60;
+}
 
 
 
@@ -53,13 +39,34 @@ document.getElementById("seconds").innerHTML = secondsLeft;
 
     let secondsToShow = secondsLeft;
 
+    let minutesToShow = minutesLeft;
+
+    let hoursToShow = hoursLeft;
+
+
+
+    
+
     const clock = setInterval(function(){
         secondsToShow--;
+
         console.log(secondsToShow);
 
         document.getElementById("seconds").innerHTML = secondsToShow;
+
+        document.getElementById("minutes").innerHTML = minutesToShow;
+
+        document.getElementById("hours").innerHTML = hoursToShow;
         if(secondsToShow === 0){
             secondsToShow = 60;
+            minutesToShow--;
+        } else if (minutesToShow === 0 && hoursLeft !==0){
+            minutesToShow = 59;
+            hoursLeft--;
+        } else if (hoursToShow === 0){
+            minutesToShow = 0
+            
+            alert ("IT'S LESSON TIME")
         }
     }, 1000);
 
