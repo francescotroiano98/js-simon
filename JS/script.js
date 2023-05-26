@@ -1,18 +1,18 @@
 const booleanLesson = new Date('May 26, 2023 09:30:00');
 
-const myDay = new Date('May 25, 2023 7:30:00');
+const myDay = new Date('May 25, 2023 7:31:00');
 
 let daysLeft = Math.abs(booleanLesson.getDate() - myDay.getDate() - 1);
 
 console.log(daysLeft);
 
-let hoursLeft = Math.floor((booleanLesson - myDay) / (1000 * 60 * 60)) % 24; // il modulo di 24 mi garantisce che il valore dei minuti rimanga compreso tra 0 e 23 indipendentemente dalla differenza
+let hoursLeft = Math.abs(booleanLesson.getHours() - myDay.getHours()) % 24; // il modulo di 24 mi garantisce che il valore dei minuti rimanga compreso tra 0 e 23 indipendentemente dalla differenza
 console.log(hoursLeft);
 
-let minutesLeft = Math.floor((booleanLesson - myDay) / (1000 * 60)) % 60; // il modulo di 60 mi garantisce che il valore dei minuti rimanga compreso tra 0 e 59 indipendentemente dalla differenza
+let minutesLeft = Math.abs(booleanLesson.getMinutes() - myDay.getMinutes()) % 60; // il modulo di 60 mi garantisce che il valore dei minuti rimanga compreso tra 0 e 59 indipendentemente dalla differenza
 console.log(minutesLeft);
 
-let secondsLeft = Math.floor((booleanLesson - myDay) / 1000) % 60; // il modulo di 60 mi garantisce che il valore dei secondi rimanga compreso tra 0 e 59 indipendentemente dalla differenza
+let secondsLeft =Math.abs(booleanLesson.getSeconds() - myDay.getSeconds()) % 60; // il modulo di 60 mi garantisce che il valore dei secondi rimanga compreso tra 0 e 59 indipendentemente dalla differenza
 console.log(secondsLeft);
 
 
@@ -24,10 +24,6 @@ document.getElementById("hours").innerHTML = hoursLeft;
 document.getElementById("minutes").innerHTML = minutesLeft;
 
 document.getElementById("seconds").innerHTML = secondsLeft;
-
-if (secondsLeft === 0){
-    secondsLeft = 60;
-}
 
 
 
@@ -45,6 +41,18 @@ if (secondsLeft === 0){
 
 
 
+    if(secondsToShow === 0){
+        secondsToShow = 60;
+        minutesToShow--;
+    } else if (minutesToShow === 0 && hoursToShow !== 0){
+        hoursLeft--;
+        minutesToShow = 59;
+        
+    } else if (minutesToShow && hoursToShow === 0){
+        minutesToShow = 0
+        
+        alert ("IT'S LESSON TIME")
+    }
     
 
     const clock = setInterval(function(){
@@ -57,17 +65,8 @@ if (secondsLeft === 0){
         document.getElementById("minutes").innerHTML = minutesToShow;
 
         document.getElementById("hours").innerHTML = hoursToShow;
-        if(secondsToShow === 0){
-            secondsToShow = 60;
-            minutesToShow--;
-        } else if (minutesToShow === 0 && hoursLeft !==0){
-            minutesToShow = 59;
-            hoursLeft--;
-        } else if (hoursToShow === 0){
-            minutesToShow = 0
-            
-            alert ("IT'S LESSON TIME")
-        }
+
+        
     }, 1000);
 
     setTimeout(function(){
